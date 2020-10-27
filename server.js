@@ -13,7 +13,8 @@ app.use((req, res, next) => {
 });
 
 //define routes
-app.use('/api/v1', require('./routes/properties'));
+app.use('/api/v1/properties', require('./routes/properties'));
+app.use('/api/v1/users', require('./routes/users'));
 
 const PORT = process.env.PORT || 5001;
 

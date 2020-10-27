@@ -8,9 +8,9 @@ const {
 
 // @route  GET api/users
 // @access public
-router.route('/properties').get(getProperties);
-router.route('/properties/:propertyId').get(getProperty);
-router.route('/properties').post(createProperty);
+router.route('/').get(getProperties);
+router.route('/:propertyId').get(getProperty);
+router.route('/').post(createProperty);
 
 router.use('/', express.static('client'));
 
