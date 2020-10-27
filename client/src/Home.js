@@ -3,6 +3,7 @@ import { ROOT_API } from './config';
 import { usePropertyFetch } from './components/hooks/usePropertyFetch';
 import { BarChart } from './components/elements/BarChart';
 import { DropdownMenu } from './components/elements/DropdownMenu';
+import { Spinner } from './components/elements/Spinner';
 import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
 
@@ -22,7 +23,7 @@ export const Home = () => {
     fetchProperty(ROOT_API, selectProperty);
   }, [selectProperty]);
   //if (error === true) return <Error />;
-  //if (loading === true) return <Spinner />;
+  if (loading === true) return <Spinner />;
   return (
     <div>
       <Row span={12}>

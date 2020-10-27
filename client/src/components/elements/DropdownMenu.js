@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Menu, Dropdown, Button, message, Tooltip } from 'antd';
+import { Menu, Dropdown, Button } from 'antd';
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
 import { StyledDropdown } from './../styles/StyledDropdown';
 
