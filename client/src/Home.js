@@ -20,8 +20,6 @@ export const Home = () => {
     setSelectProperty(value);
   };
 
-  //console.log(properties);
-
   useEffect(() => {
     fetchProperty(ROOT_API, selectProperty);
     fetchProperties(ROOT_API);
