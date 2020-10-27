@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-export const usePropertyFetch = () => {
-  const [properties, setProperties] = useState({ properties: [] });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+export const usePropertiesFetch = () => {
+  const [properties, setProperties] = useState([]);
+  const [allLoading, setAllLoading] = useState(false);
+  const [allError, setAllError] = useState(false);
 
-  const fetchProperties = async (endpoint, keywordQuery) => {
-    setLoading(true);
-    setError(false);
+  const fetchProperties = async (endpoint) => {
+    setAllLoading(true);
+    setAllError(false);
     try {
       const queryResult = await axios.get(endpoint);
 
       const result = queryResult.data;
-      setProperties({ properties: result });
+      setProperties(result);
     } catch (error) {
-      setError(true);
+      setAllError(true);
     }
-    setLoading(false);
+    setAllLoading(false);
   };
 
-  return [{ properties, loading, error }, fetchProperties];
+  return [{ properties, allLoading, allError }, fetchProperties];
 };

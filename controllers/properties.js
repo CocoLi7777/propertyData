@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const ErrorResponse = require('../utils/errorResponse');
 const Property = require('../models/Properties');
 

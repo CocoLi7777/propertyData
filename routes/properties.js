@@ -12,6 +12,4 @@ router.route('/').get(getProperties);
 router.route('/:propertyId').get(getProperty);
 router.route('/').post(createProperty);
 
-router.use('/', express.static('client'));
-
 module.exports = router;
