@@ -19,7 +19,7 @@ exports.getProperties = async (req, res) => {
 exports.getProperty = async (req, res, next) => {
   const property = await Property.findOne({
     propertyId: req.params.propertyId,
-  }).select('income');
+  });
 
   if (!property) {
     return next(
