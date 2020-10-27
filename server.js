@@ -7,6 +7,11 @@ connectDB();
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 //define routes
 
 app.use('/api/v1', require('./routes/properties'));
