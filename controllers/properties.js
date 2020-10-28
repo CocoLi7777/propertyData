@@ -1,5 +1,5 @@
 const express = require('express');
-const ErrorResponse = require('../utils/errorResponse');
+const ErrorHandling = require('../utils/errorHandling');
 const Property = require('../models/Properties');
 
 // Get all properies: GET /api/v1/properties
@@ -22,7 +22,7 @@ exports.getProperty = async (req, res, next) => {
 
   if (!property) {
     return next(
-      new ErrorResponse(
+      new ErrorHandling(
         `Property not found with id of ${req.params.propertyId}`,
         404
       )
@@ -40,7 +40,7 @@ exports.createProperty = async (req, res, next) => {
   });
   if (checkProperty) {
     return next(
-      new ErrorResponse(
+      new ErrorHandling(
         `The Property has been existed, please add a differnt one`,
         400
       )

@@ -1,4 +1,4 @@
-const ErrorResponse = require('../utils/errorResponse');
+const ErrorHandling = require('../utils/errorHandling');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -12,7 +12,7 @@ exports.createUser = async (req, res, next) => {
     let user = await User.findOne({ email });
 
     if (user) {
-      return next(new ErrorResponse('User already exists', 400));
+      return next(new ErrorHandling('User already exists', 400));
     }
 
     user = new User({
@@ -36,7 +36,7 @@ exports.createUser = async (req, res, next) => {
     jwt.sign(
       payload,
       config.get('jwtSecret'),
-      { expiresIn: '5 days' },
+      { expiresIn: '2 days' },
       (err, token) => {
         if (err) throw err;
         res.json({ token });

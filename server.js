@@ -11,20 +11,16 @@ connectDB();
 
 app.use(express.json());
 
-// Set security headers
 app.use(helmet());
 
-// Prevent XSS attacks
 app.use(xss());
 
-// Rate limiting
 const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 mins
-  max: 100,
+  windowMs: 1 * 60 * 1000, // 10 mins
+  max: 10,
 });
 app.use(limiter);
 
-// Prevent http param pollution
 app.use(hpp());
 
 app.use((req, res, next) => {
