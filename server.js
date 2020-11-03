@@ -29,6 +29,7 @@ app.use((req, res, next) => {
 });
 
 //define routes
+app.use('/api/v1/auth', require('./routes/auth'));
 app.use('/api/v1/properties', require('./routes/properties'));
 app.use('/api/v1/users', require('./routes/users'));
 

@@ -49,7 +49,7 @@ exports.createUser = async (req, res, next) => {
 
     jwt.sign(
       payload,
-      config.get('jwtSecret'),
+      config.get('jwtKey'),
       { expiresIn: '2 days' },
       (err, token) => {
         if (err) throw err;
