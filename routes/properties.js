@@ -5,6 +5,7 @@ const {
   getProperty,
   createProperty,
 } = require('../controllers/properties');
+const { check } = require('express-validator/check');
 
 // @route  GET api/users
 // @access public
