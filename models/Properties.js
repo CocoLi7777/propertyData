@@ -4,11 +4,11 @@ const PropertySchema = new mongoose.Schema({
   propertyId: {
     type: String,
     unique: true,
-    required: [true, 'Please add a property ID'],
+    required: true,
   },
   propertyName: {
     type: String,
-    required: [true, 'Please add a property name'],
+    required: true,
   },
   income: {
     January: {

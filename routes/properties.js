@@ -8,8 +8,15 @@ const {
 
 // @route  GET api/users
 // @access public
-router.route('/').get(getProperties);
-router.route('/:propertyId').get(getProperty);
-router.route('/').post(createProperty);
+router.get('/', getProperties);
+router.get('/:propertyId', getProperty);
+router.post(
+  '/',
+  [
+    check('propertyId', 'Please input the propertyId').not().isEmpty(),
+    check('propertyName', 'Please input the name of property').not().isEmpty(),
+  ],
+  createProperty
+);
 
 module.exports = router;

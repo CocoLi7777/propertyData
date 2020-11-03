@@ -3,11 +3,17 @@ const User = require('../models/User');
 const { validationResult } = require('express-validator/check');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const gravatar = require('gravatar');
 const config = require('config');
 
 // Create user  POST /api/v1/users
 
 exports.createUser = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { name, email, password } = req.body;
   try {
     let user = await User.findOne({ email });
@@ -16,9 +22,16 @@ exports.createUser = async (req, res, next) => {
       return next(new ErrorHandling('User already exists', 400));
     }
 
+    const avatar = gravatar.url(email, {
+      s: '200',
+      r: 'pg',
+      d: 'mm',
+    });
+
     user = new User({
       name,
       email,
+      avatar,
       password,
     });
 
@@ -44,10 +57,6 @@ exports.createUser = async (req, res, next) => {
       }
     );
   } catch (err) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
     console.error(err.message);
     res.status(500).send('Server error');
   }
