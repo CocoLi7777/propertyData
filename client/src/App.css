@@ -30,10 +30,6 @@ ul {
   list-style: none;
 }
 
-img {
-  width: 100%;
-}
-
 /* Utilities */
 .container {
   max-width: 1100px;
@@ -471,10 +467,6 @@ button {
   text-align: center;
 }
 
-.post img {
-  width: 100px;
-}
-
 .post .comment-count {
   background: var(--light-color);
   color: var(--primary-color);
@@ -542,12 +534,6 @@ button {
   }
 
   /* Profile Page */
-
-  .profile-top img,
-  .profile img {
-    width: 200px;
-    margin: auto;
-  }
 
   .profile-grid {
     grid-template-areas:

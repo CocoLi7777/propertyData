@@ -5,12 +5,10 @@ const config = require('config');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator/check');
 
-// GET api/auth
+// GET api/v1/auth
 exports.authCheck = async (req, res) => {
   try {
-    const user = await (await User.findById(req.user.id)).isSelected(
-      '-password'
-    );
+    const user = await User.findById(req.user.id).select('-password');
     res.status(200).json(user);
   } catch (err) {
     console.error(err.message);
